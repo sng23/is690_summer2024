@@ -3,9 +3,13 @@
 ## FastAPI and Pydantic
 
 1. **What role does Pydantic play in FastAPI, and how does it enhance data validation and settings management?**
-   - Provide examples from the project where Pydantic is used.
+* Pydantic provides data validation for our python projects. The most often used class is BaseModel, which is a superclass many of our data classes inherit from.
+* These are the files on our project that use some part of the pydantic library. Usually, it is to extend from BaseModel, but also used for validation errors and related.
+![Alt text](image.png)
+
 
 2. **Outline the complete process of handling a user login request in your FastAPI application. Provide a step-by-step explanation with code examples from the project.**
+The user is directed to the page with the login.html template. The user enters their credentials which are routed via the `@router.post` login_with_form to the UserService.login_user method, which blocks. That method is user_service.py.login_user which calls another method get_by_email and authenticates the session or not. If successful, ther user is redirecetd to the /dashboard page and their access_token cookie is set.
 
 3. **Explain the service repository pattern and how it is applied in your project. Provide an example of how routes are managed and linked to services.**
 
