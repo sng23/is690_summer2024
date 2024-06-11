@@ -4,7 +4,7 @@
 
 1. **What role does Pydantic play in FastAPI, and how does it enhance data validation and settings management?**
 Pydantic provides data validation for our python projects. The most often used class is BaseModel, which is a superclass many of our data classes inherit from. These are the files on our project that use some part of the pydantic library. Usually, it is to extend from BaseModel, but also used for validation errors and related.
-![Alt text](image.png)
+![](image.png)
 
 
 2. **Outline the complete process of handling a user login request in your FastAPI application. Provide a step-by-step explanation with code examples from the project.**
@@ -84,21 +84,31 @@ GitHub actions are build steps that can be executed after code is pushed to make
 ## API Design and Implementation
 
 14. **What are REST APIs, and how do they function in your project? Provide an example of a REST endpoint from your user management system.**
+Representation State Transfer is the foundation of web apis,  the FastAPI used here. Http methods are used to interact with them (GET, POST, PUT, DELETE) that potentially correspond to ISUD/CRUD operations for databases. The `user_routes` users, register, and login accept json or urlencoded form data for processing.
 
 15. **What is HATEOAS (Hypermedia as the Engine of Application State)? Provide an example of its implementation in your project's API responses, along with a screenshot.**
+The router is an example of controlling application state through routes.
+![](image-1.png)
 
 ## Role-Based Access Control (RBAC)
 
 16. **What is Role-Based Access Control (RBAC) and how is it implemented in your project?**
+RBAC is the idea of instead of assigning permissions to each user, assign them to a role. Then assign the role to users. This level of abstraction is a convenience when assigning or evaluating the same set of permissions that apply to a group of users. Three roles that will be used here are AUTHENTICATE, ADMIN, and MANAGER.
 
 17. **Explain the different user roles defined in your project (ANONYMOUS, AUTHENTICATED, MANAGER, ADMIN) and their permissions.**
+Routes in `event_routes` and `user_routes` depend on the ADMIN or MANAGER roles. Routes in `user_schema` depend on the AUTHENTICATED role
 
 18. **Provide a code example showing how RBAC is enforced in one of your FastAPI endpoints.**
+![](image-2.png)
 
 ## Route Parameters and Pydantic Schemas
 
 19. **Explain how route parameters are used in FastAPI. Provide an example of a route that takes a parameter and demonstrate how it is used within the endpoint.**
+The delete method uses the db reference and user id
+![](image-3.png)
 
 20. **How does FastAPI use Pydantic schemas to generate Swagger documentation? Provide an example from your project where a Pydantic schema is used and show the corresponding Swagger documentation.**
+Through the `json_schema_extra` json object, defined in the Config class of the *_schema.py files.
+![](image-4.png)
 
 These questions ensure a comprehensive assessment of the students' understanding of the topics related to your project setup, focusing on practical implementations and theoretical concepts.
