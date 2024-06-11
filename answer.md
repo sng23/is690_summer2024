@@ -67,16 +67,19 @@ which brings them back to the app to the `verify-email` endpoint. There, the Use
 ## Security Practices
 
 10. **How do you ensure the security of user passwords in your project? Discuss the hashing algorithm used and any additional security measures implemented.**
+The hashing algorithm in use for passwords here is bcrypt.
 
 11. **Explain the difference between hashing and encoding. Provide examples from your project where each is used:**
-    - **Hashing:** Example and explanation with code
-    - **Encoding:** Example and explanation with code
+    - **Hashing:** A one way trip for the data, but can be determined to be equal to another hashed data. See the `hash_password` and `verify_password` methods in the `security`` module.
+    - **Encoding:** A conversion that can be undone, to place data into a state that suitable for trasfer or storage. An example is the data in a JWT token. See the `jwt_service` module here. 
 
 ## Project Management with Docker and CI/CD
 
 12. **Discuss the advantages of using Docker Compose for running your project. How does it help in maintaining a consistent development and deployment environment?**
+Using Docker helps manage large complicated projects made of multiple service. It keeps environments consistent by requiring the versions of dependencies. It also provides a way to build and push images to repositories in layers to save bandwidth and provide a convenient 3rd party storage location. Images can be tagged using semantic versioning, git ref, or other means.
 
 13. **Describe the role of GitHub Actions in your project's CI/CD pipeline. How do you automate testing and deployment using GitHub Actions?**
+GitHub actions are build steps that can be executed after code is pushed to make sure nothing is broken. Tests are usually run from CI to verify this. Continuous delivery is making the build available on GitHub for testers.
 
 ## API Design and Implementation
 
